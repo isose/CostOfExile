@@ -1,76 +1,34 @@
-import React from "react";
-import "./LandingPage.css";
-import Navbar from "./Navbar.js";
+import React, { useState } from 'react';
+import axios from 'axios';
+import './LandingPage.css';
+import Navbar from './Navbar.js';
 
 function LandingPage() {
-  function submitAccountName() {
+  const [account, setAccount] = useState('');
+  const [character, setCharacter] = useState('');
+  const [pobCode, setPobCode] = useState('');
+
+  function handleSubmitAccount() {
+    axios
+      .get('/account/characters', {
+        params: {
+          accountName: account,
+        },
+      })
+      .then((response) => {
+        // TODO
+      })
+      .catch((error) => {
+        // TODO
+      });
+  }
+
+  function handleCalculateCharacter() {
     // TODO
   }
 
-  function calculateCharacterImport() {
+  function handleCalculatePobCode() {
     // TODO
-  }
-
-  function CharacterImportForm() {
-    return (
-      <>
-        <div className="character-form">
-          <h2>Character Import</h2>
-          <form>
-            <div>
-              <input className="input" type="text" placeholder="Account Name" />
-              <button className="btn" type="button" onClick={submitAccountName}>
-                Submit
-              </button>
-            </div>
-            <div>
-              <select className="drop-down" placeholder="Character">
-                <option
-                  className="option-placeholder"
-                  value=""
-                  disabled
-                  selected
-                >
-                  Select your character
-                </option>
-              </select>
-              <button
-                className="btn"
-                type="button"
-                onClick={calculateCharacterImport}
-              >
-                Calculate
-              </button>
-            </div>
-          </form>
-        </div>
-      </>
-    );
-  }
-
-  function submitPobCode() {
-    // TODO
-  }
-
-  function PoBImportForm() {
-    return (
-      <>
-        <div className="pob-form">
-          <h2>Path of Building Import</h2>
-          <form>
-            <input
-              className="input"
-              id="pob_input"
-              type="text"
-              placeholder="Path of Building code"
-            />
-            <button className="btn" type="button" onClick={submitPobCode}>
-              Calculate
-            </button>
-          </form>
-        </div>
-      </>
-    );
   }
 
   return (
@@ -78,8 +36,71 @@ function LandingPage() {
       <Navbar />
       <div className="landing-form-container">
         <div className="landing-form">
-          <CharacterImportForm />
-          <PoBImportForm />
+          <div className="character-form">
+            <h2>Character Import</h2>
+            <form>
+              <div>
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Account Name"
+                  id="accountName"
+                  name="accountName"
+                  value={account}
+                  onChange={(e) => setAccount(e.target.value)}
+                />
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={handleSubmitAccount}
+                >
+                  Submit
+                </button>
+              </div>
+              <div>
+                <select
+                  className="drop-down"
+                  placeholder="Character"
+                  id="character"
+                  name="character"
+                  value={character}
+                  onChange={(e) => setCharacter(e.target.value)}
+                >
+                  <option className="option-placeholder" value="" disabled>
+                    Select your character
+                  </option>
+                </select>
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={handleCalculateCharacter}
+                >
+                  Calculate
+                </button>
+              </div>
+            </form>
+          </div>
+          <div className="pob-form">
+            <h2>Path of Building Import</h2>
+            <form>
+              <input
+                className="input"
+                placeholder="Path of Building code"
+                id="pobCode"
+                name="pobCode"
+                value={pobCode}
+                type="text"
+                onChange={(e) => setPobCode(e.target.value)}
+              />
+              <button
+                className="btn"
+                type="button"
+                onClick={handleCalculatePobCode}
+              >
+                Calculate
+              </button>
+            </form>
+          </div>
         </div>
       </div>
       <p className="footer">Developed by MattHub</p>
