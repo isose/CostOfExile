@@ -1,14 +1,14 @@
 import './Navbar.css';
-import betterlogo from './image/betterlogo.png';
+import logo from './image/logo.png';
 
 let devUrl = '/';
 
 function Navbar() {
   return (
     <div className="nav-bar">
-      <div className="div-center">
+      <div>
         <a href={devUrl}>
-          <img alt="logo" src={betterlogo} className="logo"></img>
+          <img alt="logo" src={logo} className="logo"></img>
         </a>
       </div>
     </div>
