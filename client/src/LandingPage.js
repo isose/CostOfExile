@@ -1,5 +1,6 @@
 import React from "react";
 import "./LandingPage.css";
+import Navbar from "./Navbar.js";
 
 function LandingPage() {
   function submitAccountName() {
@@ -74,6 +75,7 @@ function LandingPage() {
 
   return (
     <>
+      <Navbar />
       <div className="landing-form-container">
         <div className="landing-form">
           <CharacterImportForm />
