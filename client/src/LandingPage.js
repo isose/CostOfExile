@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './LandingPage.css';
+import Navbar from './Navbar.js';
 
 function LandingPage() {
   const [account, setAccount] = useState('');
@@ -9,7 +10,7 @@ function LandingPage() {
 
   function handleSubmitAccount() {
     axios
-      .get('http://localhost:3001/account/characters', {
+      .get('/account/characters', {
         params: {
           accountName: account,
         },
@@ -32,6 +33,7 @@ function LandingPage() {
 
   return (
     <>
+      <Navbar />
       <div className="landing-form-container">
         <div className="landing-form">
           <div className="character-form">
