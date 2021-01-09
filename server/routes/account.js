@@ -5,7 +5,8 @@ const parser = require('../scripts/parser');
 const router = express.Router();
 
 router.get('/characters', (req, res) => {
-  const accountName = req.body['accountName'];
+  const { accountName } = req.query;
+
   const url = `https://www.pathofexile.com/character-window/get-characters?accountName=${accountName}`;
   axios.get(`${url}`).then(
     (characterList) => {
