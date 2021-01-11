@@ -9,6 +9,7 @@ function ParseCharacters(characterList) {
         name: characterData['name'],
         league: characterData['league'],
         level: characterData['level'],
+        class: characterData['class'],
       };
 
       processedList.push(processedData);

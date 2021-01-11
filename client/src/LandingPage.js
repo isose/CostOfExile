@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './LandingPage.css';
 import Navbar from './Navbar.js';
 
 function LandingPage() {
-  const [account, setAccount] = useState('');
+  const [account, setAccount] = useState({ accountName: '', characters: [] });
   const [character, setCharacter] = useState('');
   const [pobCode, setPobCode] = useState('');
 
+  useEffect(() => {
+    // reset character state when character array is changed
+    setCharacter('');
+  }, [account.characters]);
+
   function handleSubmitAccount() {
-    axios
-      .get('/account/characters', {
-        params: {
-          accountName: account,
-        },
-      })
-      .then((response) => {
-        // TODO
-      })
-      .catch((error) => {
-        // TODO
-      });
+    if (account.accountName) {
+      axios
+        .get('/account/characters', {
+          params: {
+            accountName: account.accountName,
+          },
+        })
+        .then((response) => {
+          setAccount({ ...account, characters: response.data });
+        })
+        .catch((error) => {
+          setAccount({ ...account, characters: [] });
+          // TODO display detailed error prompt/message
+        });
+    }
   }
 
   function handleCalculateCharacter() {
@@ -46,8 +54,10 @@ function LandingPage() {
                   placeholder="Account Name"
                   id="accountName"
                   name="accountName"
-                  value={account}
-                  onChange={(e) => setAccount(e.target.value)}
+                  value={account.accountName}
+                  onChange={(e) =>
+                    setAccount({ ...account, accountName: e.target.value })
+                  }
                 />
                 <button
                   className="btn"
@@ -66,9 +76,18 @@ function LandingPage() {
                   value={character}
                   onChange={(e) => setCharacter(e.target.value)}
                 >
-                  <option className="option-placeholder" value="" disabled>
+                  <option hidden value="">
                     Select your character
                   </option>
+                  {account.characters.map(
+                    ({ name, level, class: clazz, league }) => {
+                      return (
+                        <option key={name} value={name}>
+                          {name}: {level} {clazz} {league}
+                        </option>
+                      );
+                    },
+                  )}
                 </select>
                 <button
                   className="btn"
