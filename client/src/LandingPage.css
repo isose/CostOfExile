@@ -12,8 +12,8 @@ input:focus {
 }
 
 html {
-  font-family: "Open Sans";
-  background-image: url("./image/background.png");
+  font-family: 'Open Sans';
+  background-image: url('./image/background.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

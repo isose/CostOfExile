@@ -1,0 +1,47 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+* {
+  padding: 0;
+  margin: 0;
+  border: hidden;
+  outline: none;
+}
+
+html {
+  font-family: 'Open Sans';
+  background-image: url('./image/background.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.footer {
+  font-size: 12px;
+  text-align: right;
+  color: #70798c;
+  position: absolute;
+  bottom: 0.5rem;
+  width: 100%;
+  right: 1rem;
+}
+
+.character-page {
+  height: 100vh;
+}
+
+.equipment-container {
+  display: grid;
+  column-gap: 5px;
+  row-gap: 5px;
+  grid-template-columns: repeat(8, 60px);
+  grid-template-rows: repeat(8, 60px);
+  justify-items: stretch;
+  justify-content: center;
+  align-content: center;
+}
+
+.div-equip {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
