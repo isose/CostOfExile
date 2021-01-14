@@ -45,3 +45,88 @@ html {
   display: flex;
   justify-content: center;
 }
+
+/*Hard coded CSS, figure out a way to dynamically pass values to border-start values */
+.unique-color {
+  background-color: rgba(110, 54, 0, 0.75);
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+}
+
+.rare-color {
+  background-color: rgba(240, 205, 10, 0.6);
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+}
+
+.main-hand-weapon {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 5;
+}
+
+.off-hand-weapon {
+  grid-column-start: 7;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 5;
+}
+
+.helmet {
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.chestplate {
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 3;
+  grid-row-end: 6;
+}
+
+.belt {
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 6;
+  grid-row-end: 7;
+}
+
+.left-ring {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.right-ring {
+  grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.amulet {
+  grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.gloves {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 5;
+  grid-row-end: 7;
+}
+
+.boots {
+  grid-column-start: 6;
+  grid-column-end: 8;
+  grid-row-start: 5;
+  grid-row-end: 7;
+}
